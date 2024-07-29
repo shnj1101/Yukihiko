@@ -48,7 +48,8 @@ jobs:
       - name: 変更をプッシュしてプルリクエストを作成
         if: steps.check_changes.outputs.changes == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN_YUKIHIKO }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN_YUKIHIKO }}
         run: |
           branch_name="update-papers-data-$(date +'%Y%m%d%H%M%S')"
           git checkout -b $branch_name
@@ -59,7 +60,8 @@ jobs:
       - name: プルリクエストの自動マージ
         if: steps.check_changes.outputs.changes == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN_YUKIHIKO }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN_YUKIHIKO }}
         run: |
           if [ -n "$PR_URL" ]; then
             pr_number=$(echo $PR_URL | awk -F'/' '{print $NF}')

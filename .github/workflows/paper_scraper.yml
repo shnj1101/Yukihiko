@@ -2,7 +2,7 @@ name: 論文スクレイパーの実行
 
 on:
   schedule:
-    - cron: '00 11 * * 1-5'  # 月曜日から金曜日の19:30 JST（10:30 UTC）に実行
+    - cron: '00 02 * * *'  # 月曜日から金曜日の11:00 JST（2:00 UTC）に実行[分,時,日,月,曜日]
   workflow_dispatch:  # 手動実行のオプション
 
 permissions:
